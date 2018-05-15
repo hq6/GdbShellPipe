@@ -28,3 +28,7 @@ and then invoke the following command.
         0x000000000040052e <+8>:     movq   $0x4005e4,-0x8(%rbp)
      => 0x0000000000400536 <+16>:    mov    -0x8(%rbp),%rax
         0x000000000040053a <+20>:    mov    %rax,%rdi
+
+Note that the native gdb `shell` command already handles shell pipelines which
+do not involve internal gdb commands.  This extension is intended for the case
+where the **first** command in the pipeline is a gdb internal command.
