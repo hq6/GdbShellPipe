@@ -29,11 +29,21 @@ class ShellPipe (gdb.Command):
         else:
             gdb_command = arg
 
-        # Collect the output and feed it through the pipe
-        output = gdb.execute(gdb_command, True, True)
+        # If there is an error executing the first command as a gdb command,
+        # assume that it is a shell command.
+        try:
+            # Collect the output and feed it through the pipe
+            output = gdb.execute(gdb_command, True, True)
+        except:
+            output = None
+            shell_commands = arg
+            sys.stderr.write("Command '%s' is not a gdb command; treating it as a shell command.\n" % gdb_command)
+
         if shell_commands:
             shell_process = subprocess.Popen(shell_commands, stdin=subprocess.PIPE, shell=True)
-            shell_process.communicate(output.encode('utf-8'))
+            if output:
+                shell_process.communicate(output.encode('utf-8'))
+            shell_process.wait()
         else:
             sys.stdout.write(output)
 

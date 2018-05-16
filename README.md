@@ -31,4 +31,6 @@ and then invoke the following command.
 
 Note that the native gdb `shell` command already handles shell pipelines which
 do not involve internal gdb commands.  This extension is intended for the case
-where the **first** command in the pipeline is a gdb internal command.
+where the **first** command in the pipeline is a gdb internal command. If the
+first command in the pipeline is a valid gdb command as well as a valid
+external command, it will be interpreted as the former rather than the latter.
