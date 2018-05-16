@@ -37,7 +37,6 @@ class ShellPipe (gdb.Command):
         except:
             output = None
             shell_commands = arg
-            sys.stderr.write("Command '%s' is not a gdb command; treating it as a shell command.\n" % gdb_command)
 
         if shell_commands:
             shell_process = subprocess.Popen(shell_commands, stdin=subprocess.PIPE, shell=True)
