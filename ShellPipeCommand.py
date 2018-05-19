@@ -24,7 +24,7 @@ class ShellPipe (gdb.Command):
         gdb_command, shell_commands = None, None
 
         if '|' in arg:
-            gdb_command, shell_commands = arg.split("|", maxsplit=1)
+            gdb_command, shell_commands = arg.split("|", 1)
             gdb_command, shell_commands = gdb_command.strip(), shell_commands.strip()
         else:
             gdb_command = arg
