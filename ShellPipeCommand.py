@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 import gdb
-import string
 import subprocess
 import sys
 
