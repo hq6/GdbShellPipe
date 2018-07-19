@@ -23,7 +23,7 @@ Suppose one wanted to find all the `mov` instructions in the current function.
 One can source the file `ShellPipeCommand.py` in their `$HOME/.gdb_init` file,
 and then invoke the following command.
 
-        (gdb) shell-pipe disas | grep main
+        (gdb) shell-pipe disas | grep mov
         0x0000000000400527 <+1>:     mov    %rsp,%rbp
         0x000000000040052e <+8>:     movq   $0x4005e4,-0x8(%rbp)
      => 0x0000000000400536 <+16>:    mov    -0x8(%rbp),%rax
